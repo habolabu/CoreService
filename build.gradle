@@ -1,0 +1,81 @@
+buildscript {
+    ext {
+        coreServiceVersion = "1.0.0"
+        springBootVersion = "2.7.3"
+        commonLang3Version = "3.12.0"
+        springBootValidationVersion = "2.7.3"
+        jaxbApiVersion = "2.4.0-b180830.0359"
+        commonLang3Version = "3.12.0"
+        mapstructVersion = "1.5.2.Final"
+        springBootStarterAMQPVersion = "3.0.0"
+        jacksonDatabindVersion = '2.13.4'
+        unirestObjectMapperJacksonVersion = "3.13.11"
+        springSecurityVersion = "2.7.4"
+        jjwtApiVersion = "0.11.5"
+        jjwtJacksonVersion = "0.11.5"
+        jjwtImplVersion = "0.11.5"
+    }
+
+    repositories {
+        mavenCentral()
+    }
+
+    dependencies {
+        classpath "org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}"
+    }
+}
+plugins {
+    id "java-library"
+    id "maven-publish"
+    id 'org.springframework.boot' version '2.7.4'
+    id 'io.spring.dependency-management' version '1.0.14.RELEASE'
+}
+
+group = 'edu.ou'
+version = '1.0.0'
+sourceCompatibility = '17'
+
+configurations {
+    compileOnly {
+        extendsFrom annotationProcessor
+    }
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    testImplementation "org.springframework.boot:spring-boot-starter-test"
+    implementation "edu.ou:CoreService:${coreServiceVersion}"
+    implementation "org.springframework.boot:spring-boot-starter:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-web:${springBootVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-validation:${springBootValidationVersion}"
+    runtimeOnly "javax.xml.bind:jaxb-api:${jaxbApiVersion}"
+    implementation 'org.projectlombok:lombok'
+    annotationProcessor "org.projectlombok:lombok"
+    implementation "org.mapstruct:mapstruct:${mapstructVersion}"
+    annotationProcessor "org.mapstruct:mapstruct-processor:${mapstructVersion}"
+    implementation "org.apache.commons:commons-lang3:${commonLang3Version}"
+    implementation "org.springframework.boot:spring-boot-starter-amqp:${springBootStarterAMQPVersion}"
+    implementation "com.fasterxml.jackson.core:jackson-databind:${jacksonDatabindVersion}"
+    implementation "com.konghq:unirest-objectmapper-jackson:${unirestObjectMapperJacksonVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-security:${springSecurityVersion}"
+    implementation "io.jsonwebtoken:jjwt-api:${jjwtApiVersion}"
+    runtimeOnly "io.jsonwebtoken:jjwt-jackson:${jjwtJacksonVersion}"
+    runtimeOnly "io.jsonwebtoken:jjwt-impl:${jjwtImplVersion}"
+    implementation "org.springframework.boot:spring-boot-starter-data-mongodb"
+
+}
+tasks.named('test') {
+    useJUnitPlatform()
+}
+
+publishing {
+    publications {
+        maven(MavenPublication){
+            from components.java
+        }
+    }
+}
