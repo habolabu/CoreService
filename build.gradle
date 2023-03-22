@@ -48,6 +48,14 @@ publishing {
     }
 }
 
+bootJar {
+    enabled = false
+}
+
+jar {
+    enabled = true
+}
+
 group = 'edu.ou'
 version = '1.0.0'
 sourceCompatibility = '17'
@@ -88,17 +96,3 @@ tasks.named('test') {
     useJUnitPlatform()
 }
 
-publishing {
-    publications {
-        maven(MavenPublication){
-            from components.java
-        }
-    }
-}
-bootJar {
-    enabled = false
-}
-
-jar {
-    enabled = true
-}
