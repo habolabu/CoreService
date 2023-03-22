@@ -44,6 +44,9 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
+            groupId 'edu.ou.coreservice'
+            artifactId 'coreservice'
+            version '1.0'
             from(components.java)
         }
     }
