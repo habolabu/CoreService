@@ -43,6 +43,7 @@ publishing {
     }
     publications {
         gpr(MavenPublication) {
+            artifactId='coreservice'
             from(components.java)
         }
     }
