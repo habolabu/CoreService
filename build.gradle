@@ -37,16 +37,16 @@ publishing {
             name = 'GitHubPackages'
             url = uri('https://maven.pkg.github.com/habolabu/CoreService')
             credentials {
-                username = System.getenv("GITHUB_ACTOR")
-                password = System.getenv("GITHUB_TOKEN")
+                username = System.getenv("PACKAGE_ACTOR")
+                password = System.getenv("PACKAGE_TOKEN")
             }
         }
     }
     publications {
         gpr(MavenPublication) {
             groupId 'edu.ou.coreservice'
-            artifactId 'CoreService'
-            version '1.0'
+            artifactId 'coreservice'
+            version '1.0.0'
             from(components.java)
         }
     }
