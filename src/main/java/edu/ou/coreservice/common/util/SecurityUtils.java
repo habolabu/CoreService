@@ -38,7 +38,7 @@ public class SecurityUtils {
         }
 
         return new CurrentAccountInfoResponse()
-                .setUserId((Integer) accountDetail.get("userId"))
+                .setUserId(Integer.parseInt((String) accountDetail.get("userId")))
                 .setUsername((String) accountDetail.get("username"))
                 .setPermissions((List<String>) accountDetail.get("permissions"))
                 .setPassword((String) accountDetail.get("password"));
