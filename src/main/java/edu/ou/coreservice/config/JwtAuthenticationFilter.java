@@ -113,8 +113,9 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
         if (!tokenRequest.getToken().equals(refreshToken.getNewToken())) {
             tokenRequest.setToken(refreshToken.getNewToken());
             tokenRequest.setRefreshToken(refreshToken.getNewToken());
-            response.addCookie(new Cookie("access_token", tokenRequest.getToken()));
-            response.addCookie(new Cookie("refresh_token", tokenRequest.getRefreshToken()));
+            response.addHeader("access_token", tokenRequest.getToken());
+            response.addHeader("refresh_token", tokenRequest.getRefreshToken());
+            response.addHeader("Access-Control-Expose-Headers",  "access_token, refresh_token");
         }
 
         final Boolean validToken = (Boolean) rabbitTemplate.convertSendAndReceive(
