@@ -112,7 +112,7 @@ public class JwtAuthenticationFilter extends OncePerRequestFilter {
 
         if (!tokenRequest.getToken().equals(refreshToken.getNewToken())) {
             tokenRequest.setToken(refreshToken.getNewToken());
-            tokenRequest.setRefreshToken(refreshToken.getNewToken());
+            tokenRequest.setRefreshToken(refreshToken.getNewRefreshToken());
             response.addHeader("access_token", tokenRequest.getToken());
             response.addHeader("refresh_token", tokenRequest.getRefreshToken());
             response.addHeader("Access-Control-Expose-Headers",  "access_token, refresh_token");
