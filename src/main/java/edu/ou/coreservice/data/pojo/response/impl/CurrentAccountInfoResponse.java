@@ -10,4 +10,5 @@ public class CurrentAccountInfoResponse {
     private String password;
     private List<String> permissions;
     private int userId;
+    private int accountId;
 }
