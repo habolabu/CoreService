@@ -1,7 +1,7 @@
 package edu.ou.coreservice.common.util;
 
 public class PaginationUtils {
-    private final static int PAGE_SIZE = 2;
+    private final static int PAGE_SIZE = 10;
 
     /**
      * Get begin index of row in database
